@@ -1,0 +1,12 @@
+open home
+nautilus /home/trungnam/
+open documents
+nautilus /home/trungnam/Documents
+open downloads
+nautilus /home/trungnam/Downloads
+open pictures
+nautilus /home/trungnam/Pictures
+open videos
+nautilus /home/trungnam/Videos
+open trash
+nautilus /home/trungnam/Trash
