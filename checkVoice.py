@@ -9,7 +9,8 @@ def length_file() :
 	CoList = Content.split("\n")
 	for i in CoList :
 		Counter+=1;
-    	print(Counter-1);
+    	#print(Counter-1);
+	File.close
 	return(Counter-1) 
 
 length_command = length_file()/2;

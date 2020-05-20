@@ -9,4 +9,6 @@ nautilus /home/trungnam/Pictures
 open videos
 nautilus /home/trungnam/Videos
 open trash
-nautilus /home/trungnam/Trash
+nautilus ~/Trash
+open Google Map
+xdg-open https://www.google.com/maps/
