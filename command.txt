@@ -10,5 +10,10 @@ open videos
 nautilus /home/trungnam/Videos
 open trash
 nautilus ~/Trash
+shut down
+shutdown
+reboot
+reboot
 open Google Map
 xdg-open https://www.google.com/maps/
+
