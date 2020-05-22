@@ -6,7 +6,7 @@ import time
 class speech :
 	start = 0
 	end = 0
-	text = " "
+	text = "1"
 	def length_file(self) :
 		File = open("command.txt","a+")
 		Counter = 0
@@ -19,7 +19,7 @@ class speech :
 		File.close
 		return(Counter-1) 
 	def speech2text(self) :
-		end = 0
+		
 		r = sr.Recognizer()
 		#while True :
 		with sr.Microphone() as source :
@@ -36,28 +36,31 @@ class speech :
 			quit()
 		except : 
 			print("Don't recognition your voice !!! Please talking again !")
+			text = "abbbbb"
 		else :
-			text = r.recognize_google(audio)
-			if (text == "hey Siri" or end == 1) :
-				start = 1
+			self.text = r.recognize_google(audio)
+			if (self.text == "hey Siri" or self.end == 1) :
+				self.start = 1
 				print("Xin chao !!!")
-			if (text == "goodbye") :
+			if (self.text == "goodbye") :
 				print("Goodbye !!!")
-				start = 0
-				end = 1
-		
+				self.start = 0
+				self.end = 1
+		return (self.start,self.text)
 def main():
 	x = 0
-	y = 0
+	y = 1
 	i = 0
+	begin = 2
+	_text = "a"
 	command = []
 	execute = []
-	count = -6
 	count2 = 0
 	error = 0
 	Text = speech()
-	length_command = Text.length_file()/2
-
+	length_command = int(Text.length_file()/2)
+	count = -9
+	#print(count)
 	file = open("command.txt","a+")
 	for x in range(length_command) :
 		command.append(str(file.readline()).replace("\n",""))
@@ -66,25 +69,31 @@ def main():
 	#print(execute)
 	
 	while True :
-		Text.speech2text()
-		print (Text.text)
-		if Text.start == 1 :
+		begin,_text = Text.speech2text()
+		#print("aaas")
+		#print (type(_text))
+		#print (begin)
+		#print("trungnam")
+		if begin == 1 :
+		#	print("begin")
 			for y in range(length_command) :
-				count = count+1
+		#		print("xxx")
 				#print (command[count])
-				if Text.text == command[count] :
-					print("a")
+				if str(_text) == command[count] :
+		#			print("aaaaaaaa")
+		#			print("a")
 					print('Executing...')
 					os.system(execute[count])
 					#print(parent_child)
 					print("Done !")
 				else :
 					error +=1
-				if error == length_command :
+				count =count +1
+				if error == length_command and str(_text) != "hey Siri" and str(_text) != command[0]:
 					print("Don't execute your command voice!")
-				count = -6
-				y=0;
-				error = 0
+					count = -9
+					y=0
+					error = 0
 		if Text.end == 1 :
 			quit()
 	file.close
